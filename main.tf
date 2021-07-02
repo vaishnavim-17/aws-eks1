@@ -37,6 +37,24 @@ module "network_loadbalancer" {
   ]
 }
 
+module "route53" {
+  source  = "git::git@github.com:Greg215/terraform-demo-vg.git//route53-records?ref=main"
+  zone_id = "Z07374591FC76OBQXEXUL"
+  type    = "CNAME"
+  records = [
+    {
+      NAME   = "BHO010.training.visiontech.com.sg"
+      RECORD = module.network_loadbalancer.dns_name
+      TTL    = "300"
+    },
+    {
+      NAME   = "hazelcast-bho010.training.visiontech.com.sg"
+      RECORD = module.network_loadbalancer.dns_name
+      TTL    = "300"
+    },
+  ]
+}
+
 module "eks_cluster" {
   source                     = "git::git@github.com:Greg215/terraform-demo-vg.git//eks-cluster?ref=main"
   name                       = "bh-eks-cluster"
