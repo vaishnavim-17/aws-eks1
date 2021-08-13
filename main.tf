@@ -66,6 +66,11 @@ module "route53" {
 	NAME = "dashboard-bho010.training.visiontech.com.sg"
 	RECORD = module.network_loadbalancer.dns_name
 	TTL = "300"
+    },
+    {
+	NAME = "jenkins-bho010.training.visiontech.com.sg"
+	RECORD = module.network_loadbalancer.dns_name
+	TTL = "300"
     }
   ]
 }
