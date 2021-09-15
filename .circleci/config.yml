@@ -69,8 +69,8 @@ jobs:
        description: |
           If to create to remove the cluster
        type: string
-   steps:
-     - slack/notify:
+    steps:
+      - slack/notify:
           custom: |
            {
               "blocks": [
